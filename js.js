@@ -21,5 +21,5 @@ IvaT = (oProduct.precio * IVA) * oProduct.cantidad;
 TotalCon = TotalSin + IvaT;
 
 console.log("El precio sin IVA es de ", TotalSin.toFixed(2), "€");
-console.log("El IVA aplicable a su producto es del ", IVA * 100,"% por lo que el IVA es ",IvaT.toFixed(2));
+console.log("El IVA aplicable a su producto es del ", IVA * 100,"% por lo que el IVA es ",IvaT.toFixed(2),"€");
 console.log("Total a pagar ", TotalCon.toFixed(2),"€");
