@@ -1,25 +1,31 @@
 
 
-const oProduct ={
-    cantidad:3,
-    precio:12.5,
-    tipo:"libro",
+const oEmpleado ={
+    bruto:20000,
+    hijos:0,
+    pagas:14,
 }
 
-if(oProduct.cantidad < 0) oProduct.cantidad = 0;
 
-if(oProduct.tipo == "comida" ){
-    IVA= 0.1;
-} else if(oProduct.tipo == "libro"){
-    IVA = 0.04;
+
+if(oEmpleado.bruto < 12000){
+    Reduccion= 0;
+} else if(oEmpleado.bruto < 24000){
+    Reduccion = 0.08;
+}else if(oEmpleado.bruto < 34000){
+    Reduccion = 0.16;
 }else{
-    IVA = 0.21;
+    Reduccion = 0.30;
 }
 
-TotalSin = oProduct.cantidad * oProduct.precio;
-IvaT = (oProduct.precio * IVA) * oProduct.cantidad;
-TotalCon = TotalSin + IvaT;
+if(oEmpleado.hijos>0){
+    Reduccion = Reduccion - (0.02*oEmpleado.hijos);
+}
 
-console.log("El precio sin IVA es de ", TotalSin.toFixed(2), "€");
-console.log("El IVA aplicable a su producto es del ", IVA * 100,"% por lo que el IVA es ",IvaT.toFixed(2),"€");
-console.log("Total a pagar ", TotalCon.toFixed(2),"€");
+
+NetoT = oEmpleado.bruto - oEmpleado.bruto* Reduccion;
+NetoM = NetoT / oEmpleado.pagas;
+
+
+console.log("Sueldo neto anual", NetoT.toFixed(2), "€");
+console.log("Sueldo neto mensual", NetoM.toFixed(2), "€");
