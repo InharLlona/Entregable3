@@ -3,24 +3,25 @@
 const oProduct ={
     cantidad:3,
     precio:12.5,
-    tipo:"libro",
+    tipo:"comida",
 }
 
-if(oProduct.tipo == "comida" ){
-    IVA= 0.1;
-} else if(oProduct.tipo == "libro"){
-    IVA = 0.04;
-}else{
-    IVA = 0.21;
+function Price(Objectp){
+    if(Objectp.tipo == "comida" ){
+        IVA= 0.1;
+    } else if(Objectp.tipo == "libro"){
+        IVA = 0.04;
+    }else{
+        IVA = 0.21;
+    }
+    result= Objectp.precio * IVA + Objectp.precio;
+    return result;
 }
 
-TotalSin = oProduct.cantidad * oProduct.precio;
-IvaT = (oProduct.precio * IVA) * oProduct.cantidad;
-TotalCon = TotalSin + IvaT;
-if(oProduct.cantidad > 0){
-console.log("El precio sin IVA es de ", TotalSin.toFixed(2), "€");
-console.log("El IVA aplicable a su producto es del ", IVA * 100,"% por lo que el IVA es ",IvaT.toFixed(2),"€");
-console.log("Total a pagar ", TotalCon.toFixed(2),"€");
+var Total = (oProduct.cantidad > 0) ? oProduct.cantidad * Price(oProduct):0;
+if (oProduct.cantidad<0){
+    console.log("La cantidad debe ser positiva");
 }else{
-    console.log("La cantidad no debe ser negativa");
+console.log("Cuando computamos el IVA, el producto pasa a valer", Price(oProduct),"€");
+console.log("Debe usted abonar la cantidad de ", Total,"€");
 }
